@@ -431,6 +431,95 @@ Twitch
     
 </div>
 
+    <img id="mascota" src="IMG_7166.png">
+
+<style>
+
+#mascota{
+
+    position:fixed;
+
+    width:70px;
+
+    bottom:20px;
+
+    left:-120px;
+
+    z-index:99999;
+
+    transition:0.2s linear;
+
+}
+
+</style>
+
+<script>
+
+const mascota = document.getElementById("mascota");
+
+const poses = [
+
+"IMG_7166.png",
+"IMG_7165.png",
+"IMG_7169.png",
+"IMG_7170.png",
+"IMG_7168.png",
+"IMG_7167.png"
+
+];
+
+let frame = 0;
+
+setInterval(() => {
+
+    mascota.src = poses[frame];
+
+    frame = (frame + 1) % poses.length;
+
+}, 900);
+
+let x = -120;
+
+let direccion = 1;
+
+setInterval(() => {
+
+    x += 4 * direccion;
+
+    mascota.style.left = x + "px";
+
+    if(x > window.innerWidth - 80){
+
+        direccion = -1;
+
+        mascota.style.transform = "scaleX(-1)";
+
+    }
+
+    if(x < -120){
+
+        direccion = 1;
+
+        mascota.style.transform = "scaleX(1)";
+
+    }
+
+}, 40);
+
+mascota.addEventListener("click", () => {
+
+    mascota.style.bottom = "120px";
+
+    setTimeout(() => {
+
+        mascota.style.bottom = "20px";
+
+    }, 500);
+
+});
+
+</script>
+    
 </body>
 </html>
 
